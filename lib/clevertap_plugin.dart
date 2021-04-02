@@ -1,17 +1,16 @@
+// @dart=2.9
+
 import 'dart:async';
 
 import 'package:flutter/services.dart';
 
-typedef void CleverTapInAppNotificationDismissedHandler(
-    Map<String, dynamic> mapList);
-typedef void CleverTapInAppNotificationButtonClickedHandler(
-    Map<String, String> mapList);
+typedef void CleverTapInAppNotificationDismissedHandler(Map<String, dynamic> mapList);
+typedef void CleverTapInAppNotificationButtonClickedHandler(Map<String, String> mapList);
 typedef void CleverTapProfileDidInitializeHandler();
 typedef void CleverTapProfileSyncHandler(Map<String, dynamic> map);
 typedef void CleverTapInboxDidInitializeHandler();
 typedef void CleverTapInboxMessagesDidUpdateHandler();
-typedef void CleverTapInboxNotificationButtonClickedHandler(
-    Map<String, String> mapList);
+typedef void CleverTapInboxNotificationButtonClickedHandler(Map<String, String> mapList);
 typedef void CleverTapExperimentsDidUpdateHandler();
 typedef void CleverTapDisplayUnitsLoadedHandler(List<dynamic> displayUnitList);
 typedef void CleverTapFeatureFlagUpdatedHandler();
@@ -19,35 +18,28 @@ typedef void CleverTapProductConfigInitializedHandler();
 typedef void CleverTapProductConfigFetchedHandler();
 typedef void CleverTapProductConfigActivatedHandler();
 typedef void CleverTapPushAmpPayloadReceivedHandler(Map<String, dynamic> map);
-typedef void CleverTapPushClickedPayloadReceivedHandler(
-    Map<String, dynamic> map);
+typedef void CleverTapPushClickedPayloadReceivedHandler(Map<String, dynamic> map);
 
 class CleverTapPlugin {
-  CleverTapInAppNotificationDismissedHandler
-      cleverTapInAppNotificationDismissedHandler;
-  CleverTapInAppNotificationButtonClickedHandler
-      cleverTapInAppNotificationButtonClickedHandler;
+  CleverTapInAppNotificationDismissedHandler cleverTapInAppNotificationDismissedHandler;
+  CleverTapInAppNotificationButtonClickedHandler cleverTapInAppNotificationButtonClickedHandler;
   CleverTapProfileDidInitializeHandler cleverTapProfileDidInitializeHandler;
   CleverTapProfileSyncHandler cleverTapProfileSyncHandler;
   CleverTapInboxDidInitializeHandler cleverTapInboxDidInitializeHandler;
   CleverTapInboxMessagesDidUpdateHandler cleverTapInboxMessagesDidUpdateHandler;
-  CleverTapInboxNotificationButtonClickedHandler
-      cleverTapInboxNotificationButtonClickedHandler;
+  CleverTapInboxNotificationButtonClickedHandler cleverTapInboxNotificationButtonClickedHandler;
   CleverTapExperimentsDidUpdateHandler cleverTapExperimentsDidUpdateHandler;
   CleverTapDisplayUnitsLoadedHandler cleverTapDisplayUnitsLoadedHandler;
   CleverTapFeatureFlagUpdatedHandler cleverTapFeatureFlagUpdatedHandler;
-  CleverTapProductConfigInitializedHandler
-      cleverTapProductConfigInitializedHandler;
+  CleverTapProductConfigInitializedHandler cleverTapProductConfigInitializedHandler;
   CleverTapProductConfigFetchedHandler cleverTapProductConfigFetchedHandler;
   CleverTapProductConfigActivatedHandler cleverTapProductConfigActivatedHandler;
   CleverTapPushAmpPayloadReceivedHandler cleverTapPushAmpPayloadReceivedHandler;
-  CleverTapPushClickedPayloadReceivedHandler
-      cleverTapPushClickedPayloadReceivedHandler;
+  CleverTapPushClickedPayloadReceivedHandler cleverTapPushClickedPayloadReceivedHandler;
 
   static const MethodChannel _channel = const MethodChannel('clevertap_plugin');
 
-  static final CleverTapPlugin _clevertapPlugin =
-      new CleverTapPlugin._internal();
+  static final CleverTapPlugin _clevertapPlugin = new CleverTapPlugin._internal();
 
   factory CleverTapPlugin() => _clevertapPlugin;
 
@@ -60,8 +52,7 @@ class CleverTapPlugin {
     switch (call.method) {
       case "inAppNotificationDismissed":
         Map<dynamic, dynamic> args = call.arguments;
-        cleverTapInAppNotificationDismissedHandler(
-            args.cast<String, dynamic>());
+        cleverTapInAppNotificationDismissedHandler(args.cast<String, dynamic>());
         break;
       case "onInAppButtonClick":
         Map<String, String> args = call.arguments;
@@ -109,8 +100,7 @@ class CleverTapPlugin {
 
       case "pushClickedPayloadReceived":
         Map<dynamic, dynamic> args = call.arguments;
-        cleverTapPushClickedPayloadReceivedHandler(
-            args.cast<String, dynamic>());
+        cleverTapPushClickedPayloadReceivedHandler(args.cast<String, dynamic>());
         break;
     }
   }
@@ -126,8 +116,7 @@ class CleverTapPlugin {
       cleverTapInAppNotificationButtonClickedHandler = handler;
 
   /// Define a method to handle profile initialization
-  void setCleverTapProfileDidInitializeHandler(
-          CleverTapProfileDidInitializeHandler handler) =>
+  void setCleverTapProfileDidInitializeHandler(CleverTapProfileDidInitializeHandler handler) =>
       cleverTapProfileDidInitializeHandler = handler;
 
   /// Define a method to handle profile sync
@@ -135,13 +124,11 @@ class CleverTapPlugin {
       cleverTapProfileSyncHandler = handler;
 
   /// Define a method to handle inbox initialization
-  void setCleverTapInboxDidInitializeHandler(
-          CleverTapInboxDidInitializeHandler handler) =>
+  void setCleverTapInboxDidInitializeHandler(CleverTapInboxDidInitializeHandler handler) =>
       cleverTapInboxDidInitializeHandler = handler;
 
   /// Define a method to handle inbox update
-  void setCleverTapInboxMessagesDidUpdateHandler(
-          CleverTapInboxMessagesDidUpdateHandler handler) =>
+  void setCleverTapInboxMessagesDidUpdateHandler(CleverTapInboxMessagesDidUpdateHandler handler) =>
       cleverTapInboxMessagesDidUpdateHandler = handler;
 
   /// Define a method to handle inbox notification button clicked
@@ -150,18 +137,15 @@ class CleverTapPlugin {
       cleverTapInboxNotificationButtonClickedHandler = handler;
 
   /// Define a method to handle dynamic variable experiments update
-  void setCleverTapExperimentsDidUpdateHandler(
-          CleverTapExperimentsDidUpdateHandler handler) =>
+  void setCleverTapExperimentsDidUpdateHandler(CleverTapExperimentsDidUpdateHandler handler) =>
       cleverTapExperimentsDidUpdateHandler = handler;
 
   /// Define a method to handle Native Display Unit updates
-  void setCleverTapDisplayUnitsLoadedHandler(
-          CleverTapDisplayUnitsLoadedHandler handler) =>
+  void setCleverTapDisplayUnitsLoadedHandler(CleverTapDisplayUnitsLoadedHandler handler) =>
       cleverTapDisplayUnitsLoadedHandler = handler;
 
   /// Define a method to handle Feature Flag updates
-  void setCleverTapFeatureFlagUpdatedHandler(
-          CleverTapFeatureFlagUpdatedHandler handler) =>
+  void setCleverTapFeatureFlagUpdatedHandler(CleverTapFeatureFlagUpdatedHandler handler) =>
       cleverTapFeatureFlagUpdatedHandler = handler;
 
   /// Define a method to handle Product config initialization
@@ -170,18 +154,15 @@ class CleverTapPlugin {
       cleverTapProductConfigInitializedHandler = handler;
 
   /// Define a method to handle Product config fetch updates
-  void setCleverTapProductConfigFetchedHandler(
-          CleverTapProductConfigFetchedHandler handler) =>
+  void setCleverTapProductConfigFetchedHandler(CleverTapProductConfigFetchedHandler handler) =>
       cleverTapProductConfigFetchedHandler = handler;
 
   /// Define a method to handle Product config activation updates
-  void setCleverTapProductConfigActivatedHandler(
-          CleverTapProductConfigActivatedHandler handler) =>
+  void setCleverTapProductConfigActivatedHandler(CleverTapProductConfigActivatedHandler handler) =>
       cleverTapProductConfigActivatedHandler = handler;
 
   /// Define a method to handle Push Amplification payload
-  void setCleverTapPushAmpPayloadReceivedHandler(
-          CleverTapPushAmpPayloadReceivedHandler handler) =>
+  void setCleverTapPushAmpPayloadReceivedHandler(CleverTapPushAmpPayloadReceivedHandler handler) =>
       cleverTapPushAmpPayloadReceivedHandler = handler;
 
   /// Define a method to handle Push Clicked payload
@@ -221,17 +202,12 @@ class CleverTapPlugin {
 
   // Set true to connect app to dashboard to see variables defined by app
   static Future<void> setUIEditorConnectionEnabled(bool value) async {
-    return await _channel
-        .invokeMethod('setUIEditorConnectionEnabled', {'value': value});
+    return await _channel.invokeMethod('setUIEditorConnectionEnabled', {'value': value});
   }
 
   /// Method to create Notification Channel
-  static Future<void> createNotificationChannel(
-      String channelId,
-      String channelName,
-      String channelDescription,
-      int importance,
-      bool showBadge) async {
+  static Future<void> createNotificationChannel(String channelId, String channelName,
+      String channelDescription, int importance, bool showBadge) async {
     return await _channel.invokeMethod('createNotificationChannel', {
       'channelId': channelId,
       'channelName': channelName,
@@ -242,13 +218,8 @@ class CleverTapPlugin {
   }
 
   /// Method to create Notification Channel With Sound
-  static Future<void> createNotificationChannelWithSound(
-      String channelId,
-      String channelName,
-      String channelDescription,
-      int importance,
-      bool showBadge,
-      String sound) async {
+  static Future<void> createNotificationChannelWithSound(String channelId, String channelName,
+      String channelDescription, int importance, bool showBadge, String sound) async {
     return await _channel.invokeMethod('createNotificationChannelWithSound', {
       'channelId': channelId,
       'channelName': channelName,
@@ -260,13 +231,8 @@ class CleverTapPlugin {
   }
 
   /// Method to create Notification Channel with Group
-  static Future<void> createNotificationChannelWithGroupId(
-      String channelId,
-      String channelName,
-      String channelDescription,
-      int importance,
-      String groupId,
-      bool showBadge) async {
+  static Future<void> createNotificationChannelWithGroupId(String channelId, String channelName,
+      String channelDescription, int importance, String groupId, bool showBadge) async {
     return await _channel.invokeMethod('createNotificationChannelWithGroupId', {
       'channelId': channelId,
       'channelName': channelName,
@@ -298,22 +264,19 @@ class CleverTapPlugin {
   }
 
   /// Method to create Notification Channel Group
-  static Future<void> createNotificationChannelGroup(
-      String groupId, String groupName) async {
-    return await _channel.invokeMethod('createNotificationChannelGroup',
-        {'groupId': groupId, 'groupName': groupName});
+  static Future<void> createNotificationChannelGroup(String groupId, String groupName) async {
+    return await _channel.invokeMethod(
+        'createNotificationChannelGroup', {'groupId': groupId, 'groupName': groupName});
   }
 
   /// Method to delete Notification Channel
   static Future<void> deleteNotificationChannel(String channelId) async {
-    return await _channel
-        .invokeMethod('deleteNotificationChannel', {'channelId': channelId});
+    return await _channel.invokeMethod('deleteNotificationChannel', {'channelId': channelId});
   }
 
   /// Method to delete Notification Channel Group
   static Future<void> deleteNotificationChannelGroup(String groupId) async {
-    return await _channel
-        .invokeMethod('deleteNotificationChannelGroup', {'groupId': groupId});
+    return await _channel.invokeMethod('deleteNotificationChannelGroup', {'groupId': groupId});
   }
 
   /// Method to create Notification using CleverTap
@@ -324,8 +287,7 @@ class CleverTapPlugin {
 
   /// Method to process Notification using CleverTap to avoid duplicates using Push Amplification
   static Future<void> processPushNotification(dynamic data) async {
-    return await _channel
-        .invokeMethod('processPushNotification', {'extras': data});
+    return await _channel.invokeMethod('processPushNotification', {'extras': data});
   }
 
   /// Method to allow user to Opt out of sending data to CleverTap as per GDPR rules
@@ -340,8 +302,7 @@ class CleverTapPlugin {
 
   /// Enables Device & Networking Information Reporting to CleverTap
   static Future<void> enableDeviceNetworkInfoReporting(bool value) async {
-    return await _channel
-        .invokeMethod('enableDeviceNetworkInfoReporting', {'value': value});
+    return await _channel.invokeMethod('enableDeviceNetworkInfoReporting', {'value': value});
   }
 
   /// Enables the Profile/Events Read and Synchronization API
@@ -356,15 +317,13 @@ class CleverTapPlugin {
 
   /// Record a Screen View event
   static Future<void> recordScreenView(String screenName) async {
-    return await _channel
-        .invokeMethod('recordScreenView', {'screenName': screenName});
+    return await _channel.invokeMethod('recordScreenView', {'screenName': screenName});
   }
 
   /// Pushes a basic event.
-  static Future<void> recordEvent(
-      String eventName, Map<String, dynamic> properties) async {
-    return await _channel.invokeMethod(
-        'recordEvent', {'eventName': eventName, 'eventData': properties});
+  static Future<void> recordEvent(String eventName, Map<String, dynamic> properties) async {
+    return await _channel
+        .invokeMethod('recordEvent', {'eventName': eventName, 'eventData': properties});
   }
 
   ///**
@@ -376,28 +335,25 @@ class CleverTapPlugin {
   /// * @param items         A List which contains up to 15 Map objects,
   /// *                      where each Map object describes a particular item purchased
   ///
-  static Future<void> recordChargedEvent(Map<String, dynamic> chargeDetails,
-      List<Map<String, dynamic>> items) async {
-    return await _channel.invokeMethod(
-        'recordChargedEvent', {'chargeDetails': chargeDetails, 'items': items});
+  static Future<void> recordChargedEvent(
+      Map<String, dynamic> chargeDetails, List<Map<String, dynamic>> items) async {
+    return await _channel
+        .invokeMethod('recordChargedEvent', {'chargeDetails': chargeDetails, 'items': items});
   }
 
   /// Returns the timestamp of the first time the given event was raised
   static Future<dynamic> eventGetFirstTime(String eventName) async {
-    return await _channel
-        .invokeMethod('eventGetFirstTime', {'eventName': eventName});
+    return await _channel.invokeMethod('eventGetFirstTime', {'eventName': eventName});
   }
 
   /// Returns the timestamp of the last time the given event was raised
   static Future<dynamic> eventGetLastTime(String eventName) async {
-    return await _channel
-        .invokeMethod('eventGetLastTime', {'eventName': eventName});
+    return await _channel.invokeMethod('eventGetLastTime', {'eventName': eventName});
   }
 
   /// Returns the total count of the specified event
   static Future<int> eventGetOccurrences(String eventName) async {
-    return await _channel
-        .invokeMethod('eventGetOccurrences', {'eventName': eventName});
+    return await _channel.invokeMethod('eventGetOccurrences', {'eventName': eventName});
   }
 
   /// Returns a Map object for the particular event passed. EventDetail consists of event name, count, first time
@@ -410,21 +366,20 @@ class CleverTapPlugin {
 
   /// Returns a Map of event names and corresponding event details of all the events raised
   static Future<Map<String, dynamic>> getEventHistory(String eventName) async {
-    Map<dynamic, dynamic> response = await _channel
-        .invokeMethod('getEventHistory', {'eventName': eventName});
+    Map<dynamic, dynamic> response =
+        await _channel.invokeMethod('getEventHistory', {'eventName': eventName});
     return response.cast<String, dynamic>();
   }
 
   /// Set the user profile location in CleverTap
   static Future<void> setLocation(double latitude, double longitude) async {
-    return await _channel.invokeMethod(
-        'setLocation', {'latitude': latitude, 'longitude': longitude});
+    return await _channel
+        .invokeMethod('setLocation', {'latitude': latitude, 'longitude': longitude});
   }
 
   /// Returns a unique CleverTap identifier suitable for use with install attribution providers.
   static Future<String> profileGetCleverTapAttributionIdentifier() async {
-    return await _channel
-        .invokeMethod('profileGetCleverTapAttributionIdentifier', {});
+    return await _channel.invokeMethod('profileGetCleverTapAttributionIdentifier', {});
   }
 
   /// Returns a unique identifier by which CleverTap identifies this user.
@@ -472,22 +427,19 @@ class CleverTapPlugin {
   /// Pushes everything available in the JSON object returned by the Facebook GraphRequest
   /// Convert JSON to Map<String,dynamic> before passing it to this method.
   static Future<void> profileSetGraphUser(Map<String, dynamic> profile) async {
-    return await _channel
-        .invokeMethod('profileSetGraphUser', {'profile': profile});
+    return await _channel.invokeMethod('profileSetGraphUser', {'profile': profile});
   }
 
   ///Remove the user profile property value specified by key from the user profile
   static Future<void> profileRemoveValueForKey(String key) async {
-    return await _channel
-        .invokeMethod('profileRemoveValueForKey', {'key': key});
+    return await _channel.invokeMethod('profileRemoveValueForKey', {'key': key});
   }
 
   /// Set a collection of unique values as a multi-value user profile property, any existing value will be overwritten.
   /// Max 100 values, on reaching 100 cap, oldest value(s) will be removed.
   /// Values must be Strings and are limited to 512 characters.
   static Future<void> profileSetMultiValues(String key, List values) async {
-    return await _channel
-        .invokeMethod('profileSetMultiValues', {'key': key, 'values': values});
+    return await _channel.invokeMethod('profileSetMultiValues', {'key': key, 'values': values});
   }
 
   /// Add a unique value to a multi-value user profile property
@@ -499,8 +451,7 @@ class CleverTapPlugin {
   /// If the key currently contains a scalar value, the key will be promoted to a multi-value property
   /// with the current value cast to a string and the new value(s) added
   static Future<void> profileAddMultiValue(String key, String value) async {
-    return await _channel
-        .invokeMethod('profileAddMultiValue', {'key': key, 'value': value});
+    return await _channel.invokeMethod('profileAddMultiValue', {'key': key, 'value': value});
   }
 
   /// Add a collection of unique values to a multi-value user profile property
@@ -512,8 +463,7 @@ class CleverTapPlugin {
   /// If the key currently contains a scalar value, the key will be promoted to a multi-value property
   /// with the current value cast to a string and the new value(s) added
   static Future<void> profileAddMultiValues(String key, List values) async {
-    return await _channel
-        .invokeMethod('profileAddMultiValues', {'key': key, 'values': values});
+    return await _channel.invokeMethod('profileAddMultiValues', {'key': key, 'values': values});
   }
 
   /// Remove a unique value from a multi-value user profile property
@@ -522,8 +472,7 @@ class CleverTapPlugin {
   /// the key will be promoted to a multi-value property with the current value cast to a string.
   /// If the multi-value property is empty after the remove operation, the key will be removed.
   static Future<void> profileRemoveMultiValue(String key, String value) async {
-    return await _channel
-        .invokeMethod('profileRemoveMultiValue', {'key': key, 'value': value});
+    return await _channel.invokeMethod('profileRemoveMultiValue', {'key': key, 'value': value});
   }
 
   /// Remove a collection of unique values from a multi-value user profile property
@@ -532,15 +481,13 @@ class CleverTapPlugin {
   /// the key will be promoted to a multi-value property with the current value cast to a string.
   /// If the multi-value property is empty after the remove operation, the key will be removed.
   static Future<void> profileRemoveMultiValues(String key, List values) async {
-    return await _channel.invokeMethod(
-        'profileRemoveMultiValues', {'key': key, 'values': values});
+    return await _channel.invokeMethod('profileRemoveMultiValues', {'key': key, 'values': values});
   }
 
   /// This method is used to push install referrer via UTM source, medium & campaign parameters
-  static Future<void> pushInstallReferrer(
-      String source, String medium, String campaign) async {
-    return await _channel.invokeMethod('pushInstallReferrer',
-        {'source': source, 'medium': medium, 'campaign': campaign});
+  static Future<void> pushInstallReferrer(String source, String medium, String campaign) async {
+    return await _channel.invokeMethod(
+        'pushInstallReferrer', {'source': source, 'medium': medium, 'campaign': campaign});
   }
 
   /// Returns the time elapsed by the user on the app
@@ -565,8 +512,7 @@ class CleverTapPlugin {
 
   /// Returns a Map of UTMDetail object which consists of UTM parameters like source, medium & campaign
   static Future<Map<String, dynamic>> sessionGetUTMDetails() async {
-    Map<dynamic, dynamic> response =
-        await _channel.invokeMethod('sessionGetUTMDetails', {});
+    Map<dynamic, dynamic> response = await _channel.invokeMethod('sessionGetUTMDetails', {});
     return response.cast<String, dynamic>();
   }
 
@@ -577,8 +523,7 @@ class CleverTapPlugin {
 
   /// Opens CTInboxActivity to display Inbox Messages
   static Future<void> showInbox(Map<String, dynamic> styleConfig) async {
-    return await _channel
-        .invokeMethod('showInbox', {'styleConfig': styleConfig});
+    return await _channel.invokeMethod('showInbox', {'styleConfig': styleConfig});
   }
 
   /// Returns the count of all inbox messages for the user
@@ -603,37 +548,32 @@ class CleverTapPlugin {
   }
 
   /// Returns a json string representation of CTInboxMessage for given messageId
-  static Future<Map<String, dynamic>> getInboxMessageForId(
-      String messageId) async {
-    Map<dynamic, dynamic> response = await _channel
-        .invokeMethod('getInboxMessageForId', {'messageId': messageId});
+  static Future<Map<String, dynamic>> getInboxMessageForId(String messageId) async {
+    Map<dynamic, dynamic> response =
+        await _channel.invokeMethod('getInboxMessageForId', {'messageId': messageId});
     return response.cast<String, dynamic>();
   }
 
   /// Deletes the CTInboxMessage object for given messageId
   static Future<void> deleteInboxMessageForId(String messageId) async {
-    return await _channel
-        .invokeMethod('deleteInboxMessageForId', {'messageId': messageId});
+    return await _channel.invokeMethod('deleteInboxMessageForId', {'messageId': messageId});
   }
 
   /// Marks the given messageId of CTInboxMessage object as read
   static Future<void> markReadInboxMessageForId(String messageId) async {
-    return await _channel
-        .invokeMethod('markReadInboxMessageForId', {'messageId': messageId});
+    return await _channel.invokeMethod('markReadInboxMessageForId', {'messageId': messageId});
   }
 
   /// Pushes the Notification Clicked event for App Inbox to CleverTap.
-  static Future<void> pushInboxNotificationClickedEventForId(
-      String messageId) async {
-    return await _channel.invokeMethod(
-        'pushInboxNotificationClickedEventForId', {'messageId': messageId});
+  static Future<void> pushInboxNotificationClickedEventForId(String messageId) async {
+    return await _channel
+        .invokeMethod('pushInboxNotificationClickedEventForId', {'messageId': messageId});
   }
 
   /// Pushes the Notification Viewed event for App Inbox to CleverTap.
-  static Future<void> pushInboxNotificationViewedEventForId(
-      String messageId) async {
-    return await _channel.invokeMethod(
-        'pushInboxNotificationViewedEventForId', {'messageId': messageId});
+  static Future<void> pushInboxNotificationViewedEventForId(String messageId) async {
+    return await _channel
+        .invokeMethod('pushInboxNotificationViewedEventForId', {'messageId': messageId});
   }
 
   /// only iOS - If an application is launched from a push notification click, returns the CleverTap deep link included in the push notification
@@ -644,160 +584,140 @@ class CleverTapPlugin {
   ///Dynamic Variables
   ///Registers Boolean Variable
   static Future<void> registerBooleanVariable(String name) async {
-    return await _channel
-        .invokeMethod('registerBooleanVariable', {'name': name});
+    return await _channel.invokeMethod('registerBooleanVariable', {'name': name});
   }
 
   ///Registers Double Variable
   static Future<void> registerDoubleVariable(String name) async {
-    return await _channel
-        .invokeMethod('registerDoubleVariable', {'name': name});
+    return await _channel.invokeMethod('registerDoubleVariable', {'name': name});
   }
 
   ///Registers Integer Variable
   static Future<void> registerIntegerVariable(String name) async {
-    return await _channel
-        .invokeMethod('registerIntegerVariable', {'name': name});
+    return await _channel.invokeMethod('registerIntegerVariable', {'name': name});
   }
 
   ///Registers String Variable
   static Future<void> registerStringVariable(String name) async {
-    return await _channel
-        .invokeMethod('registerStringVariable', {'name': name});
+    return await _channel.invokeMethod('registerStringVariable', {'name': name});
   }
 
   ///Registers List of Boolean Variable
   static Future<void> registerListOfBooleanVariable(String name) async {
-    return await _channel
-        .invokeMethod('registerListOfBooleanVariable', {'name': name});
+    return await _channel.invokeMethod('registerListOfBooleanVariable', {'name': name});
   }
 
   ///Registers List of Double Variable
   static Future<void> registerListOfDoubleVariable(String name) async {
-    return await _channel
-        .invokeMethod('registerListOfDoubleVariable', {'name': name});
+    return await _channel.invokeMethod('registerListOfDoubleVariable', {'name': name});
   }
 
   ///Registers List of Integer Variable
   static Future<void> registerListOfIntegerVariable(String name) async {
-    return await _channel
-        .invokeMethod('registerListOfIntegerVariable', {'name': name});
+    return await _channel.invokeMethod('registerListOfIntegerVariable', {'name': name});
   }
 
   ///Registers List of String Variable
   static Future<void> registerListOfStringVariable(String name) async {
-    return await _channel
-        .invokeMethod('registerListOfStringVariable', {'name': name});
+    return await _channel.invokeMethod('registerListOfStringVariable', {'name': name});
   }
 
   ///Registers Map of Boolean Variable
   static Future<void> registerMapOfBooleanVariable(String name) async {
-    return await _channel
-        .invokeMethod('registerMapOfBooleanVariable', {'name': name});
+    return await _channel.invokeMethod('registerMapOfBooleanVariable', {'name': name});
   }
 
   ///Registers Map of Double Variable
   static Future<void> registerMapOfDoubleVariable(String name) async {
-    return await _channel
-        .invokeMethod('registerMapOfDoubleVariable', {'name': name});
+    return await _channel.invokeMethod('registerMapOfDoubleVariable', {'name': name});
   }
 
   ///Registers Map of Integer Variable
   static Future<void> registerMapOfIntegerVariable(String name) async {
-    return await _channel
-        .invokeMethod('registerMapOfIntegerVariable', {'name': name});
+    return await _channel.invokeMethod('registerMapOfIntegerVariable', {'name': name});
   }
 
   ///Registers Map of String Variable
   static Future<void> registerMapOfStringVariable(String name) async {
-    return await _channel
-        .invokeMethod('registerMapOfStringVariable', {'name': name});
+    return await _channel.invokeMethod('registerMapOfStringVariable', {'name': name});
   }
 
   ///Returns Boolean Variable registered
   static Future<bool> getBooleanVariable(String name, bool defaultValue) async {
-    return await _channel.invokeMethod(
-        'getBooleanVariable', {'name': name, 'defaultValue': defaultValue});
+    return await _channel
+        .invokeMethod('getBooleanVariable', {'name': name, 'defaultValue': defaultValue});
   }
 
   ///Returns Double Variable registered
-  static Future<double> getDoubleVariable(
-      String name, double defaultValue) async {
-    return await _channel.invokeMethod(
-        'getDoubleVariable', {'name': name, 'defaultValue': defaultValue});
+  static Future<double> getDoubleVariable(String name, double defaultValue) async {
+    return await _channel
+        .invokeMethod('getDoubleVariable', {'name': name, 'defaultValue': defaultValue});
   }
 
   ///Returns Integer Variable registered
   static Future<int> getIntegerVariable(String name, int defaultValue) async {
-    return await _channel.invokeMethod(
-        'getIntegerVariable', {'name': name, 'defaultValue': defaultValue});
+    return await _channel
+        .invokeMethod('getIntegerVariable', {'name': name, 'defaultValue': defaultValue});
   }
 
   ///Returns String Variable registered
-  static Future<String> getStringVariable(
-      String name, String defaultValue) async {
-    return await _channel.invokeMethod(
-        'getStringVariable', {'name': name, 'defaultValue': defaultValue});
+  static Future<String> getStringVariable(String name, String defaultValue) async {
+    return await _channel
+        .invokeMethod('getStringVariable', {'name': name, 'defaultValue': defaultValue});
   }
 
   ///Returns List of Boolean Variable registered
-  static Future<List> getListOfBooleanVariable(
-      String name, List defaultValue) async {
-    return await _channel.invokeMethod('getListOfBooleanVariable',
-        {'name': name, 'defaultValue': defaultValue});
+  static Future<List> getListOfBooleanVariable(String name, List defaultValue) async {
+    return await _channel
+        .invokeMethod('getListOfBooleanVariable', {'name': name, 'defaultValue': defaultValue});
   }
 
   ///Returns List of Double Variable registered
-  static Future<List> getListOfDoubleVariable(
-      String name, List defaultValue) async {
-    return await _channel.invokeMethod('getListOfDoubleVariable',
-        {'name': name, 'defaultValue': defaultValue});
+  static Future<List> getListOfDoubleVariable(String name, List defaultValue) async {
+    return await _channel
+        .invokeMethod('getListOfDoubleVariable', {'name': name, 'defaultValue': defaultValue});
   }
 
-  static Future<List> getListOfIntegerVariable(
-      String name, List defaultValue) async {
-    return await _channel.invokeMethod('getListOfIntegerVariable',
-        {'name': name, 'defaultValue': defaultValue});
+  static Future<List> getListOfIntegerVariable(String name, List defaultValue) async {
+    return await _channel
+        .invokeMethod('getListOfIntegerVariable', {'name': name, 'defaultValue': defaultValue});
   }
 
   ///Returns List of String Variable registered
-  static Future<List> getListOfStringVariable(
-      String name, List defaultValue) async {
-    return await _channel.invokeMethod('getListOfStringVariable',
-        {'name': name, 'defaultValue': defaultValue});
+  static Future<List> getListOfStringVariable(String name, List defaultValue) async {
+    return await _channel
+        .invokeMethod('getListOfStringVariable', {'name': name, 'defaultValue': defaultValue});
   }
 
   ///Returns Map of Boolean Variable registered
   static Future<Map<String, bool>> getMapOfBooleanVariable(
       String name, Map<String, bool> defaultValue) async {
-    Map<dynamic, dynamic> response = await _channel.invokeMethod(
-        'getMapOfBooleanVariable',
-        {'name': name, 'defaultValue': defaultValue});
+    Map<dynamic, dynamic> response = await _channel
+        .invokeMethod('getMapOfBooleanVariable', {'name': name, 'defaultValue': defaultValue});
     return response.cast<String, bool>();
   }
 
   ///Returns Map of Double Variable registered
   static Future<Map<String, double>> getMapOfDoubleVariable(
       String name, Map<String, double> defaultValue) async {
-    Map<dynamic, dynamic> response = await _channel.invokeMethod(
-        'getMapOfDoubleVariable', {'name': name, 'defaultValue': defaultValue});
+    Map<dynamic, dynamic> response = await _channel
+        .invokeMethod('getMapOfDoubleVariable', {'name': name, 'defaultValue': defaultValue});
     return response.cast<String, double>();
   }
 
   ///Returns Map of Integer Variable registered
   static Future<Map<String, int>> getMapOfIntegerVariable(
       String name, Map<String, int> defaultValue) async {
-    Map<dynamic, dynamic> response = await _channel.invokeMethod(
-        'getMapOfIntegerVariable',
-        {'name': name, 'defaultValue': defaultValue});
+    Map<dynamic, dynamic> response = await _channel
+        .invokeMethod('getMapOfIntegerVariable', {'name': name, 'defaultValue': defaultValue});
     return response.cast<String, int>();
   }
 
   ///Returns Map of String Variable registered
   static Future<Map<String, String>> getMapOfStringVariable(
       String name, Map<String, String> defaultValue) async {
-    Map<dynamic, dynamic> response = await _channel.invokeMethod(
-        'getMapOfStringVariable', {'name': name, 'defaultValue': defaultValue});
+    Map<dynamic, dynamic> response = await _channel
+        .invokeMethod('getMapOfStringVariable', {'name': name, 'defaultValue': defaultValue});
     return response.cast<String, String>();
   }
 
@@ -816,28 +736,25 @@ class CleverTapPlugin {
 
   ///Raise Notification Viewed for Display Unit id passed
   static Future<void> pushDisplayUnitViewedEvent(String unitId) async {
-    return await _channel
-        .invokeMethod('pushDisplayUnitViewedEvent', {'unitId': unitId});
+    return await _channel.invokeMethod('pushDisplayUnitViewedEvent', {'unitId': unitId});
   }
 
   ///Raise Notification Clicked for Display Unit id passed
   static Future<void> pushDisplayUnitClickedEvent(String unitId) async {
-    return await _channel
-        .invokeMethod('pushDisplayUnitClickedEvent', {'unitId': unitId});
+    return await _channel.invokeMethod('pushDisplayUnitClickedEvent', {'unitId': unitId});
   }
 
   ///Feature Flags
   ///Returns boolean value of Feature Flag
   static Future<bool> getFeatureFlag(String key, bool defaultValue) async {
-    return await _channel.invokeMethod(
-        'getFeatureFlag', {'key': key, 'defaultValue': defaultValue});
+    return await _channel
+        .invokeMethod('getFeatureFlag', {'key': key, 'defaultValue': defaultValue});
   }
 
   ///Product Config
   ///Sets Default Values for Product Config using the passed Map
   static Future<void> setDefaultsMap(Map<String, dynamic> defaults) async {
-    return await _channel
-        .invokeMethod('setDefaultsMap', {'defaults': defaults});
+    return await _channel.invokeMethod('setDefaultsMap', {'defaults': defaults});
   }
 
   ///Fetches the Product Configs from CleverTap
@@ -847,8 +764,8 @@ class CleverTapPlugin {
 
   ///Fetches Product configs, adhering to the specified minimum fetch interval in seconds.
   static Future<void> fetchWithMinimumIntervalInSeconds(int interval) async {
-    return await _channel.invokeMethod(
-        'fetchWithMinimumFetchIntervalInSeconds', {'interval': interval});
+    return await _channel
+        .invokeMethod('fetchWithMinimumFetchIntervalInSeconds', {'interval': interval});
   }
 
   ///Activates the most recently fetched Product configs
@@ -863,8 +780,7 @@ class CleverTapPlugin {
 
   ///Sets the minimum interval between successive fetch calls.
   static Future<void> setMinimumFetchIntervalInSeconds(int interval) async {
-    return await _channel.invokeMethod(
-        'setMinimumFetchIntervalInSeconds', {'interval': interval});
+    return await _channel.invokeMethod('setMinimumFetchIntervalInSeconds', {'interval': interval});
   }
 
   ///Returns the last fetched timestamp in millis.
